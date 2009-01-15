@@ -1,0 +1,9 @@
+options:
+  remote_host:
+    name: remote_host
+    notes: ssh userid and host to log on to remote server (must have no-password ssh key configured).
+    default: userid@remoteserver.example.com
+  remote_md5_path:
+    name: remote_md5_path
+    notes: Path to file on remote server containing md5 checksum.
+    default: /path/on/remote/server/to/myfile.md5
