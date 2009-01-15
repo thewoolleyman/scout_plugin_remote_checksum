@@ -3,7 +3,7 @@ class RemoteChecksum < Scout::Plugin
     begin
       remote_host = option(:remote_host)
       remote_md5_path = option(:remote_md5_path)
-      output = `ssh medicaone.com@backupspace.rimuhosting.com 'md5sum -c /home/medicaone.com/sso-nightly-latest.sql.gz.md5'`
+      output = `ssh #{remote_host} 'md5sum -c #{remote_md5_path}'`
       exitcode = $?.exitstatus.to_i
       output = "Remote Host: #{remote_host}, Remote MD5 Path: #{remote_md5_path}, MD5 output: #{output}, exit code: #{exitcode}"
       report(:md5_exitcode => exitcode)
