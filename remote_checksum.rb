@@ -3,7 +3,7 @@ class RemoteChecksum < Scout::Plugin
     begin
       remote_host = option(:remote_host)
       remote_md5_path = option(:remote_md5_path)
-      file_age_threshold_days = option(:file_age_threshold_days)
+      file_age_threshold_days = option(:file_age_threshold_days).to_i
       output = `ssh #{remote_host} 'md5sum -c #{remote_md5_path}'`
       exitcode = $?.exitstatus.to_i
       output = "Remote Host: #{remote_host}, Remote MD5 Path: #{remote_md5_path}, MD5 output: #{output}, exit code: #{exitcode}"
