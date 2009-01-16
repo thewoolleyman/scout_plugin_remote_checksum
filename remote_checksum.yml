@@ -7,3 +7,7 @@ options:
     name: remote_md5_path
     notes: Path to file on remote server containing md5 checksum.
     default: /path/on/remote/server/to/myfile.md5
+  file_age_threshold_days:
+    name: file_age_threshold_days
+    notes: Threshold, in days, for maximum age of remote_md5_path file(s)
+    default: 2
