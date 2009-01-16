@@ -13,7 +13,7 @@ class RemoteChecksum < Scout::Plugin
       elsif
         ls_output = `ssh #{remote_host} 'ls -lTt #{remote_md5_path}'`
         md5_file_dates = ls_output.split("\n").map {|line| datestring = line.split(' ')[5]; Date.strptime(datestring,"%Y-%m-%d") }
-        unless md5_file.dates.all? {|date| date > Date.today - file_age_threshold_days}
+        unless md5_file_dates.all? {|date| date > Date.today - file_age_threshold_days}
           alert(:subject => "Remote MD5 Path '#{remote_md5_path}' older than threshold of #{file_age_threshold_days}", :body => ls_output)
           exitcode = -1
         end
